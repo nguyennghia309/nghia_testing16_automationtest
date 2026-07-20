@@ -81,11 +81,8 @@ jobs:
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
           echo "passed=$PASSED" >> "$GITHUB_OUTPUT"
           echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
-          echo "message<<MSG_EOF" >> "$GITHUB_OUTPUT"
-          echo "Result: ${{ job.status }} - testing16-selenium-pom" >> "$GITHUB_OUTPUT"
-          echo "Total: $TOTAL | Passed: $PASSED | Failed: $FAILED" >> "$GITHUB_OUTPUT"
-          echo "Detail: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> "$GITHUB_OUTPUT"
-          echo "MSG_EOF"
+          echo "message=Result: ${{ job.status }} - testing16-selenium-pom | Total: $TOTAL | Passed: $PASSED | Failed: $FAILED | Detail: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> "$GITHUB_OUTPUT"
+      
 
       - name: Send Report to Slack
         if: always()
