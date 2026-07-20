@@ -90,13 +90,12 @@ jobs:
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
           echo "passed=$PASSED" >> "$GITHUB_OUTPUT"
           echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
-          {
-            echo "message<<MSG_EOF"
-            echo "Result: ${{ job.status }} - testing16-selenium-pom
-            echo "Total: $TOTAL | Passed: $PASSED | failed: $FAILED"
-            echo "Detail: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        
+          echo "message<<MSG_EOF" >> "$GITHUB_OUTPUT"
+          echo "Result: ${{ job.status }} - testing16-selenium-pom" >> "$GITHUB_OUTPUT"
+          echo "Total: $TOTAL | Passed: $PASSED | Failed: $FAILED" >> "$GITHUB_OUTPUT"
+          echo "Detail: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> "$GITHUB_OUTPUT"
           echo "MSG_EOF"
-          } >> "$GITHUB_OUTPUT"
 
 
 
