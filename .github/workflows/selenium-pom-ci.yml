@@ -74,12 +74,12 @@ jobs:
         if: always()
         id: test-summary
         run: |
-          #code theo kieu cua sh linux
+          # code theo kieu cua sh linux
           FILE="target/surefire-reports/testng-results.xml
           # $(...) chạy lệnh bên trong () và lấy kết quả lưu vào biến (vảiable)
           # VD: TOTAL=lenh => kết quả chạy lệnh sẽ lưu vào biến TOTAL
           #  total="7" passed="7" failed="0"
-          #[0-9]* => regular expression
+          # [0-9]* => regular expression
           # total="7" => grep -o 'total'="[0-9]*"' ""$FILE" | grep -o '[0-9]*'
           TOTAL=$(grep -o 'total="[0-9]*"' "$FILE" | grep -o '[0-9]*')
           PASSED=$(grep -o 'passed="[0-9]*"' "$FILE" | grep -o '[0-9]*')
@@ -90,7 +90,6 @@ jobs:
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
           echo "passed=$PASSED" >> "$GITHUB_OUTPUT"
           echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
-        
           echo "message<<MSG_EOF" >> "$GITHUB_OUTPUT"
           echo "Result: ${{ job.status }} - testing16-selenium-pom" >> "$GITHUB_OUTPUT"
           echo "Total: $TOTAL | Passed: $PASSED | Failed: $FAILED" >> "$GITHUB_OUTPUT"

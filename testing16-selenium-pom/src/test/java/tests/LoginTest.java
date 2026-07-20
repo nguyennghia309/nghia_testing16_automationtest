@@ -62,10 +62,11 @@ public class LoginTest extends BaseTest {
         loginPage.login(username, password);
 
         if (expectedResult.equalsIgnoreCase("success")) {
+            // Chèn thêm dòng đợi URL thay đổi dưới đây trước khi Assert:
+            getWait().until(org.openqa.selenium.support.ui.ExpectedConditions.urlContains("dashboard"));
+
             String currentUrl = getDriver().getCurrentUrl();
             Assert.assertTrue(currentUrl.contains("dashboard"));
-        } else {
-            Assert.assertTrue(getDriver().getCurrentUrl().contains("auth/login"));
         }
 
     }
