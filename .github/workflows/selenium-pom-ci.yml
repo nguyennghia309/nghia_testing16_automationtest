@@ -84,7 +84,6 @@ jobs:
           TOTAL=$(grep -o 'total="[0-9]*"' "$FILE" | grep -o '[0-9]*')
           PASSED=$(grep -o 'passed="[0-9]*"' "$FILE" | grep -o '[0-9]*')
           FAILED=$(grep -o 'failed="[0-9]*"' "$FILE" | grep -o '[0-9]*')
-          
           # GITHUB_OUTPUT: có sẵn của github action
           # biêns này giúp lưu trữ giá trị và để cho các step phía sau dùng tới
           # lưu giá trị vào GITHUB_OUTPUT => >>
