@@ -46,7 +46,7 @@ public class DriverFactory {
                 if (isHeadless) {
                     chromeOptions.addArguments(
                             "--headless=new",
-                            "--díable-gpu",
+                            "--disable-gpu",
                             "--no-sandbox",
                             "--window-size=1920,1080",
                             "--disable-dev-shm-usage"
