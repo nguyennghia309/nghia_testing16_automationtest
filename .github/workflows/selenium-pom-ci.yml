@@ -74,19 +74,10 @@ jobs:
         if: always()
         id: test-summary
         run: |
-          # code theo kieu cua sh linux
-          FILE="target/surefire-reports/testng-results.xml
-          # $(...) chạy lệnh bên trong () và lấy kết quả lưu vào biến (vảiable)
-          # VD: TOTAL=lenh => kết quả chạy lệnh sẽ lưu vào biến TOTAL
-          #  total="7" passed="7" failed="0"
-          # [0-9]* => regular expression
-          # total="7" => grep -o 'total'="[0-9]*"' ""$FILE" | grep -o '[0-9]*'
+          FILE="target/surefire-reports/testng-results.xml"
           TOTAL=$(grep -o 'total="[0-9]*"' "$FILE" | grep -o '[0-9]*')
           PASSED=$(grep -o 'passed="[0-9]*"' "$FILE" | grep -o '[0-9]*')
           FAILED=$(grep -o 'failed="[0-9]*"' "$FILE" | grep -o '[0-9]*')
-          # GITHUB_OUTPUT: có sẵn của github action
-          # biêns này giúp lưu trữ giá trị và để cho các step phía sau dùng tới
-          # lưu giá trị vào GITHUB_OUTPUT => >>
           echo "total=$TOTAL" >> "$GITHUB_OUTPUT"
           echo "passed=$PASSED" >> "$GITHUB_OUTPUT"
           echo "failed=$FAILED" >> "$GITHUB_OUTPUT"
@@ -95,8 +86,6 @@ jobs:
           echo "Total: $TOTAL | Passed: $PASSED | Failed: $FAILED" >> "$GITHUB_OUTPUT"
           echo "Detail: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> "$GITHUB_OUTPUT"
           echo "MSG_EOF"
-
-
 
       - name: Send Report to Slack
         if: always()
