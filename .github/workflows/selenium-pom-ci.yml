@@ -77,13 +77,13 @@ jobs:
           #code theo kieu cua sh linux
           FILE="target/surefire-reports/testng-results.xml
           # $(...) chạy lệnh bên trong () và lấy kết quả lưu vào biến (vảiable)
-          # VD: TOTAL=$(lenh) => kết quả chạy lệnh sẽ lưu vào biến TOTAL
+          # VD: TOTAL=lenh => kết quả chạy lệnh sẽ lưu vào biến TOTAL
           #  total="7" passed="7" failed="0"
           #[0-9]* => regular expression
           # total="7" => grep -o 'total'="[0-9]*"' ""$FILE" | grep -o '[0-9]*'
-          TOTAL=$(grep -o 'total'="[0-9]*"' ""$FILE" | grep -o '[0-9]*')
-          PASSED=$(grep -o 'total'="[0-9]*"' ""$FILE" | grep -o '[0-9]*')
-          FAILED=$(grep -o 'total'="[0-9]*"' ""$FILE" | grep -o '[0-9]*')
+          TOTAL=$(grep -o 'total="[0-9]*"' "$FILE" | grep -o '[0-9]*')
+          PASSED=$(grep -o 'passed="[0-9]*"' "$FILE" | grep -o '[0-9]*')
+          FAILED=$(grep -o 'failed="[0-9]*"' "$FILE" | grep -o '[0-9]*')
           
           # GITHUB_OUTPUT: có sẵn của github action
           # biêns này giúp lưu trữ giá trị và để cho các step phía sau dùng tới
